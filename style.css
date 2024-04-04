@@ -1,68 +1,46 @@
-/* Grundlegende Spielfeld- und Feld-Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; /* Dunkelgrauer Hintergrund */
+    font-family: 'Open Sans', sans-serif; /* Open Sans Schriftart */
+    color: white; /* Textfarbe */
+}
+
 #game-board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
-    grid-template-rows: repeat(3, 1fr); /* 3 Zeilen */
-    gap: 5px; /* Abstand für die "Linien" */
-    width: 310px; /* Breite des Spielfelds */
-    height: 310px; /* Höhe des Spielfelds */
-    position: relative; /* Für Pseudo-Elemente */
-    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 306px; /* Anpassung der Breite des Spielfelds */
+    height: 306px; /* Anpassung der Höhe des Spielfelds */
+    margin: 20px; /* Außenabstand */
+    box-sizing: border-box;
 }
 
 .field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #333; /* Hintergrundfarbe der Felder */
-}
-
-/* Hintergrund und Schriftarten */
-body {
-    background-color: #333;
-    color: white;
+    width: 100px; /* Breite eines Feldes */
+    height: 100px; /* Höhe eines Feldes */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-size: 2em; /* Größe der Spielmarkierungen */
+    box-sizing: border-box;
 }
 
-/* Pseudo-Elemente für die Linien */
-#game-board::before, #game-board::after {
-    content: '';
-    position: absolute;
-    background-color: white; /* Farbe der Linien */
-    width: 5px; /* Dicke der Linien */
+/* Hinzufügen der inneren vertikalen Linien */
+.field:nth-child(2), .field:nth-child(5), .field:nth-child(8) {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
 }
 
-#game-board::before {
-    /* Vertikale Linie */
-    height: 100%;
-    left: 33.3333%;
+/* Hinzufügen der inneren horizontalen Linien */
+.field:nth-child(4), .field:nth-child(5), .field:nth-child(6) {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
-#game-board::after {
-    /* Horizontale Linie */
-    width: 100%;
-    height: 5px;
-    top: 33.3333%;
-}
-
-/* Weitere Pseudo-Elemente für die zweite Reihe der Linien */
-#game-board::after, #game-board::before {
-    content: '';
-    position: absolute;
-    background-color: white;
-}
-
-#game-board::before {
-    height: 100%;
-    width: 5px; /* Dicke der Linien */
-    left: 66.6666%; /* Positioniert die zweite vertikale Linie */
-}
-
-#game-board::after {
-    top: 66.6666%; /* Positioniert die zweite horizontale Linie */
+.field:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
 }
