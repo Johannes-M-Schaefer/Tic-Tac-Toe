@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="init()">
-    <div id="game-board"></div>
+    <div id="game-board">
+        <svg id="winning-line" width="306" height="306" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+            <!-- Die Gewinnerlinie wird hier gezeichnet -->
+        </svg>
+        <!-- Die Felder (.field) werden hier hinzugefügt -->
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
